@@ -7,7 +7,6 @@ function addMessage(message, me = true) {
       <date> ${new Date().toLocaleTimeString()} </date>
     </div>
   </div>`;
-
   document.querySelector(".chat .messages").innerHTML += template;
 }
 
