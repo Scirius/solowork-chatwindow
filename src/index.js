@@ -42,7 +42,8 @@ class MyChat {
    */
 
   alertMsg(evt) {
-    alert("Message has been added at: " + evt.target.dataset.date);
+    console.log(evt);
+    alert("Message has been added at: " + evt.currentTarget.dataset.date);
   }
 
   /**
@@ -59,7 +60,9 @@ class MyChat {
   addAlerts() {
     document
       .querySelectorAll(".myMessage, .fromThem")
-      .forEach((msg) => msg.addEventListener("click", this.alertMsg));
+      .forEach((msg) =>
+        msg.addEventListener("click", (evt) => this.alertMsg(evt))
+      );
   }
   start() {
     this.typing();
