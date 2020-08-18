@@ -107,3 +107,4 @@ myChat.start();
 // Add a method to delete the last message
 // Add a button to delete the last message, next to the send button for example
 // Listen to the press, and execute the delete
+/* see above ;) */
