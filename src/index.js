@@ -34,6 +34,7 @@ let submitMsg = (evt) => {
   if (inputField.value !== "") {
     console.log(`Submitted: ${inputField.value}`);
     addMessage(inputField.value, true);
+    addAlerts();
   }
 };
 
@@ -46,15 +47,18 @@ submitBtn.addEventListener("click", submitMsg);
  */
 
 let alertMsg = (evt) => {
-  console.log("Message has been added at: " + evt.target.dataset.date);
+  alert("Message has been added at: " + evt.target.dataset.date);
 };
 
 // I used css fix to make elements inside .message unclickable
 // .myMessage > *, .fromThem > * {pointer-events: none;}
 // otherwise I get different evt.target for inside elements
-document
-  .querySelectorAll(".myMessage, .fromThem")
-  .forEach((msg) => msg.addEventListener("click", alertMsg));
+let addAlerts = () => {
+  document
+    .querySelectorAll(".myMessage, .fromThem")
+    .forEach((msg) => msg.addEventListener("click", alertMsg));
+};
+addAlerts();
 
 /**
  * Listen to every keypress (from the keyboard) in the input and call
