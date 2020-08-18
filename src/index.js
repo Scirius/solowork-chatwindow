@@ -64,8 +64,12 @@ addAlerts();
  * Listen to every keypress (from the keyboard) in the input and call
  * the function typing()
  */
+function showTyping(evt) {
+  typing();
+}
 
-// Code here
+inputField.addEventListener("keyup", showTyping);
+
 // Create a class for the chat
 // Add the function you already coded as methods for this class
 // Add a method to delete the last message
