@@ -1,3 +1,6 @@
+const submitBtn = document.querySelector("form input[type=submit]");
+const inputField = document.querySelector("form input[type=text]");
+
 function addMessage(message, me = true) {
   const template = `<div class="message">
     <div class="${
@@ -26,8 +29,15 @@ addMessage("Let's go!");
  * Listen to the submit of the form and add a new message
  * with addMessage()
  */
+let submitMsg = (evt) => {
+  evt.preventDefault();
+  if (inputField.value !== "") {
+    console.log(`Submitted: ${inputField.value}`);
+    addMessage(inputField.value, true);
+  }
+};
 
-// Code here
+submitBtn.addEventListener("click", submitMsg);
 
 /**
  * Listen to the click on each message and create an alert
@@ -35,7 +45,16 @@ addMessage("Let's go!");
  * https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
  */
 
-// Code here
+let alertMsg = (evt) => {
+  console.log("Message has been added at: " + evt.target.dataset.date);
+};
+
+// I used css fix to make elements inside .message unclickable
+// .myMessage > *, .fromThem > * {pointer-events: none;}
+// otherwise I get different evt.target for inside elements
+document
+  .querySelectorAll(".myMessage, .fromThem")
+  .forEach((msg) => msg.addEventListener("click", alertMsg));
 
 /**
  * Listen to every keypress (from the keyboard) in the input and call

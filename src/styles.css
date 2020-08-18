@@ -263,3 +263,8 @@ a.article {
 .typing.active {
   opacity: 1;
 }
+
+.myMessage > *,
+.fromThem > * {
+  pointer-events: none;
+}
