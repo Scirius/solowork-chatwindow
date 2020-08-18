@@ -44,6 +44,15 @@ class MyChat {
   alertMsg(evt) {
     alert("Message has been added at: " + evt.target.dataset.date);
   }
+
+  /**
+   * Listen to every keypress (from the keyboard) in the input and call
+   * the function typing()
+   */
+  showTyping(evt) {
+    this.typing();
+  }
+
   // I used css fix to make elements inside .message unclickable
   // .myMessage > *, .fromThem > * {pointer-events: none;}
   // otherwise I get different evt.target for inside elements
@@ -61,21 +70,14 @@ class MyChat {
       this.submitMsg(evt);
     });
     this.addAlerts();
+    inputField.addEventListener("keyup", (evt) => {
+      this.showTyping(evt);
+    });
   }
 }
 
 let myChat = new MyChat();
 myChat.start();
-
-/**
- * Listen to every keypress (from the keyboard) in the input and call
- * the function typing()
- */
-/*function showTyping(evt) {
-  typing();
-}
-
-inputField.addEventListener("keyup", showTyping);*/
 
 // Create a class for the chat
 // Add the function you already coded as methods for this class
