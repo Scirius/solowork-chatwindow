@@ -172,7 +172,8 @@ form.chat .fromThem date {
   right: 105%;
 }
 
-form.chat input {
+form.chat input,
+form.chat button {
   font: 400 13px "Open Sans", sans-serif;
   border: 0;
   padding: 0 15px;
@@ -181,17 +182,23 @@ form.chat input {
 }
 
 form.chat input[type="text"] {
-  width: 73%;
+  width: 56%;
   float: left;
 }
 
-form.chat input[type="submit"] {
-  width: 23%;
+form.chat input[type="submit"],
+form.chat #del-btn {
+  width: 22%;
   background: transparent;
   color: #007398;
   font-weight: 700;
   text-align: right;
   float: right;
+  border-left: 1px solid #ecf0f1;
+}
+
+form.chat #del-btn {
+  color: red;
 }
 
 form.chat .myMessage,
