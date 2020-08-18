@@ -1,5 +1,6 @@
 const submitBtn = document.querySelector("form input[type=submit]");
 const inputField = document.querySelector("form input[type=text]");
+const delBtn = document.querySelector("form button#del-btn");
 
 class MyChat {
   constructor() {
@@ -64,6 +65,22 @@ class MyChat {
         msg.addEventListener("click", (evt) => this.alertMsg(evt))
       );
   }
+  // delete last message, only allow up to last foreign message
+  deleteMsg(evt) {
+    let lastChild = document.querySelector(
+      ".chat .messages .message:last-child"
+    );
+    if (lastChild) {
+      if (lastChild.firstElementChild.classList.contains("myMessage")) {
+        console.log(
+          "Deleting message from: " + lastChild.firstElementChild.dataset.date
+        );
+        lastChild.remove();
+      } else {
+        console.log("Cannot delete foreign messages.");
+      }
+    }
+  }
   start() {
     this.typing();
     this.addMessage("Hi!", false);
@@ -75,6 +92,9 @@ class MyChat {
     this.addAlerts();
     inputField.addEventListener("keyup", (evt) => {
       this.showTyping(evt);
+    });
+    delBtn.addEventListener("click", (evt) => {
+      this.deleteMsg(evt);
     });
   }
 }
